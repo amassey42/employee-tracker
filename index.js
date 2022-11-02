@@ -58,9 +58,9 @@ const whatToDoFunction = ()=>{
                 addEmployee();
                 break;
 
-            // case "Update an employee role":
-            //     updateEmployee();
-            //     break;
+            case "Update an employee role":
+                updateEmployee();
+                break;
             
             //ends connection to terminal
             case "Quit":
@@ -215,31 +215,43 @@ const updateEmployee = ()=>{
     //employees
     db.query('SELECT * FROM employees',( err, results) => {
         console.log(results)
-        const choices = results.map((employee)=>{
+        const employeeChoices = results.map((employee)=>{
             return employee.first_name
         })
+        console.log(employeeChoices)
+        db.query('SELECT * FROM roles',( err, results) => {
+            // console.log(results)
+            let roleChoices = results.map((role)=>{
+                return {name: role.title, value: role.id,}
+            })
     //roles db.query
-        console.log(choices)
+        console.log(roleChoices)
         inquirer.prompt([
             {
                 type: "list",
                 name:"employeeUpdate",
-                /// ["john", "steve"]
-                choices: choices,
-                message:'Select an employee to update.'
-            }
+                // ["john", "steve"]
+                message:'Select an employee to update.',
+                choices: employeeChoices
+            },
+            {
+                type: "list",
+                name:"roleUpdate",
+                // ["john", "steve"]
+                message:'Select what role the Employee is changing to.',
+                choices: roleChoices
+            },
         ]).then(answer =>{
-            db.query('INSERT INTO employee SET ?', {
-                first_name:answer.first_name,
-                last_name: answer.last_name,
-                role_id:answer.role_id,
-                manager_id:answer.manager_id
+            db.query('INSERT INTO roles SET ?', {
+                first_name:answer.employeeUpdate,
+                role_id:answer.roleUpdate,
             })
             whatToDoFunction();
         })
     })
+})
 }
-// TODO:WHEN I choose to update an employee role
+//WHEN I choose to update an employee role
 // THEN I am prompted to select an employee to update and their new role and this information is updated in the database 
 
 
