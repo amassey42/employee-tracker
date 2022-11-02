@@ -6,9 +6,6 @@ This program is to create an note tracker. It allows you to check your Job roles
 ## Installation
 Clone repo, open repo, install dependincies using: npm i, inport sql data with, "SOURCE schema.sql;" and "SOURCE seeds.sql;". Run the program from terminal with node index.js.
 
-## Screenshots
-![Homepage](./Assets/hompeage.PNG)
-![Notes Page](./Assets/notes_page.PNG)
 
 ## link to Video Demonstration
 [Video Demonstration](https://app.castify.com/view/fcefea54-fdd0-44d0-b499-c1912b607f39)
