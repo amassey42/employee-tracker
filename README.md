@@ -11,4 +11,4 @@ Clone repo, open repo, install dependincies using: npm i, inport sql data with, 
 ![Notes Page](./Assets/notes_page.PNG)
 
 ## link to Video Demonstration
-![Video Demonstration](https://note-take-andrew.herokuapp.com)
+![Video Demonstration](https://app.castify.com/view/fcefea54-fdd0-44d0-b499-c1912b607f39)
